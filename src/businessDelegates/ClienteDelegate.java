@@ -7,23 +7,23 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import DTO.ClienteDTO;
-import RemoteObject.ClienteRemote;
+import RemoteObject.TDACliente;
 
 public class ClienteDelegate {
 
-	private static ClienteDelegate delegate;
-	private ClienteRemote remote;
-	
-	public static ClienteDelegate GetInstancia(){
-		if(delegate ==null)
-			delegate = new ClienteDelegate();
-		return delegate;
+	private static ClienteDelegate instance;
+	private TDACliente remote;
+
+	public static ClienteDelegate getInstance() {
+		if (instance == null) {
+			instance = new ClienteDelegate();
+		}
+		return instance;
 	}
-	
-	private ClienteDelegate()
-	{
+
+	private ClienteDelegate() {
 		try {
-			remote = (ClienteRemote) Naming.lookup("TPO_Rodamientos");
+			remote = (TDACliente) Naming.lookup("ClienteRemoto");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -32,10 +32,9 @@ public class ClienteDelegate {
 			e.printStackTrace();
 		}
 	}
-	
-	public List<ClienteDTO> GetClientes() throws RemoteException{
-		return remote.GetClientes();
+
+	public List<ClienteDTO> getAll() throws RemoteException {
+		return remote.getAllClientes();
 	}
-	
-	
+
 }
