@@ -88,7 +88,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="ItemPedido" items="${nuevoPedido.items}">
+						
 							<tr>
 								<td>
 									<select name="prenda" class="form-control" onchange="javascript:onChangePrenda(this)">
@@ -110,7 +110,6 @@
 									<span class="glyphicon glyphicon-remove" aria-hidden="true" onclick="javascript:removeItem(this)"></span>
 								</td>
 							</tr>
-						</c:forEach>
 					</tbody>
 				</table>
 
