@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.PedidoClienteDTO;
-import businessDelegate.PrendaDelegate;
+//import businessDelegate.PrendaDelegate;
 
 @WebServlet("/pedidos/alta/view")
 public class ViewAltaPedidoServlet extends HttpServlet {
@@ -18,8 +18,8 @@ public class ViewAltaPedidoServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("prendas", PrendaDelegate.GetInstancia().getAllPrendas());
-		req.setAttribute("nuevoPedido", new PedidoClienteDTO());
+		//req.setAttribute("prendas", PrendaDelegate.GetInstancia().getAllPrendas());
+		//req.setAttribute("nuevoPedido", new PedidoClienteDTO());
 		req.getRequestDispatcher("/jsp/viewAltaPedido.jsp").forward(req, resp);
 	}
 
