@@ -1,17 +1,32 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ attribute name="title" required="true" rtexprvalue="true" %>
 <%@ attribute name="content" fragment="true"  %>
+<% 
+    Cookie[] cookies = request.getCookies();
+    String cookieValue = null; 
+    // Get cookie value
+    if (cookies != null) { 
+        for (int i = 0; i < cookies.length; i++) { 
+            if (cookies[i].getName().equals("usuario")) { 
+                cookieValue = cookies[i].getValue();
+            }
+        }
+    }
+    
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>@{title }</title>
+<title><%=title %></title>
 
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/bootstrap-table.css">
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/chosen.min.css">
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/navbar.css">
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="/Cliente_Web/css/font-awesome.css">
 
 <script src="/Cliente_Web/Scripts/jquery-3.2.1.min.js"></script>
 <script src="/Cliente_Web/Scripts/bootstrap.min.js"></script>
@@ -25,6 +40,11 @@
 
 </head>
 <body>
+<style>
+li{
+list-style: none;
+}
+</style>
 <nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -32,21 +52,48 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li><a href="/Cliente_Web/jsp/Home.jsp">Home</a></li>
+					<%if(cookieValue.equals("empleado")){ %>
+							<li><a href="/Cliente_Web/jsp/Pedidos.jsp">Pedidos</a></li>
+							<li><a href="/Cliente_Web/jsp/OrdenesProduccion.jsp">Ordenes de Produccion</a></li>
+							<li><a href="/Cliente_Web/jsp/PedidosInsumo.jsp">Pedidos Insumos</a></li>
+							<li><a href="/Cliente_Web/jsp/Insumos.jsp">Insumos</a></li>
+							<li><a href="/Cliente_Web/jsp/Prendas.jsp">Prendas</a></li>
+							<li><a href="/Cliente_Web/jsp/Clientes.jsp">Clientes</a></li>
+								<%} else{%>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false"> Pedidos <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Nuevo</a></li>
-							<li><a href="#">Mis pedidos</a></li>
+						
+							
+					
+							<li><a href="/Cliente_Web/jsp/AltaPedido.jsp" >Nuevo</a></li>
+							<li><a href="/Cliente_Web/jsp/Pedidos.jsp">Mis pedidos</a></li>
+							
 						</ul></li>
+						<%} %>
+						
 				</ul>
+				<ul><li class="pull-right">
+				<a class="navbar-brand" href="/Cliente_Web/jsp/Login.jsp">Salir</a>
+			</li></ul>
 			</div>
+			
 			<!--/.nav-collapse -->
 		</div>
 		<!--/.container-fluid --> </nav>
 	<div class="container">
+	<script>
+	function getCookie(name) {
+		  var value = "; " + document.cookie;
+		  var parts = value.split("; " + name + "=");
+		  if (parts.length == 2) return parts.pop().split(";").shift();
+		}
+	var usuario = getCookie('usuario');
+	var kdmskd = '<%=cookieValue%>'
+	</script>
 			<jsp:invoke fragment="content"></jsp:invoke>
 		</div>
 
