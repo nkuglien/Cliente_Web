@@ -35,6 +35,7 @@
 <script src="/Cliente_Web/Scripts/bootstrap-table-es-ES.min.js"></script>
 <script src="/Cliente_Web/Scripts/bootstrap-table-filter.js"></script>
 <script src="/Cliente_Web/Scripts/bootstrap-table-filter.es-LA.js"></script>
+<script src="/Cliente_Web/Scripts/Mati.js"></script>
 
 
 
@@ -43,6 +44,9 @@
 <style>
 li{
 list-style: none;
+}
+a{
+cursor:pointer;
 }
 </style>
 <nav class="navbar navbar-default">

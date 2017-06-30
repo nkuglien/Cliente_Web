@@ -19,7 +19,8 @@
                     method: "GET",
                     columns: columnas,
                     pagination: "true",
-                    sidePagination: "client"                    
+                    pageSize:10,
+                    pageList:[10,25,50]
                 });
   
   });
@@ -36,6 +37,7 @@
           align: 'center',
           valign: 'middle',
           title: "Numero",
+          width: '20%',
           visible: true
       },
       {
@@ -43,6 +45,7 @@
           align: 'center',
           valign: 'middle',
           title: "Nombre",
+          width: '20%',
           visible: true
       },
       {
@@ -50,6 +53,7 @@
           align: 'center',
           valign: 'middle',
           title: "Direccion",
+          width: '20%',
           visible: true
       },
       {
@@ -57,6 +61,7 @@
           align: 'center',
           valign: 'middle',
           title: "Telefono",
+          width: '20%',
           visible: true
       },
       {
@@ -64,12 +69,13 @@
           align: 'center',
           valign: 'middle',
           title: "CUIT",
+          width: '20%',
           visible: true
       },
       {
           field: 'boton',
           align: 'center',
-          width: '2%',
+          width: '20%',
           mostrar: true,
           events: {
               'click .search': function (e, value, row, index) {
@@ -77,7 +83,7 @@
               }
           },
           formatter: function operateFormatter(value, row, index) {              
-                    return  "<a class='search' title='Search'><i class='fa fa-exclamation-triangle fa-lg' style='color:red'></i></a>";             
+                    return  "<a class='search' title='Search'><i class='fa fa-search fa-lg' style='color:red'></i></a>";             
 
           }
 
