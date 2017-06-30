@@ -9,9 +9,42 @@
 		<servlet-name>AccountServlet</servlet-name>
 		<servlet-class>servlets.AccountServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>OrdenProduccionServlet</display-name>
+		<servlet-name>OrdenProduccionServlet</servlet-name>
+		<servlet-class>servlets.OrdenProduccionServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>PedidoInsumoServlet</display-name>
+		<servlet-name>PedidoInsumoServlet</servlet-name>
+		<servlet-class>servlets.PedidoInsumoServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>PrendasServlet</display-name>
+		<servlet-name>PrendasServlet</servlet-name>
+		<servlet-class>servlets.PrendasServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AccountServlet</servlet-name>
 		<url-pattern>/AccountServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrdenProduccionServlet</servlet-name>
+		<url-pattern>/OrdenProduccionServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PedidoInsumoServlet</servlet-name>
+		<url-pattern>/PedidoInsumoServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PrendasServlet</servlet-name>
+		<url-pattern>/PrendasServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
