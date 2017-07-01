@@ -82,7 +82,7 @@ height: 100%;
 						
 							
 					
-							<li><a href="/Cliente_Web/jsp/AltaPedido.jsp" >Nuevo</a></li>
+							<li><a href="/Cliente_Web/pedidos/alta/view" >Nuevo</a></li>
 							<li><a href="/Cliente_Web/jsp/Pedidos.jsp">Mis pedidos</a></li>
 							
 						</ul></li>
