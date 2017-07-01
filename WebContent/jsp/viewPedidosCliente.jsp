@@ -111,10 +111,10 @@
           formatter: function operateFormatter(value, row, index) {
         	  var acciones = "";
         	  if (row.estado == "CREADO") {
-        		  acciones += "<span class='glyphicon glyphicon-ok aceptarPedido' aria-hidden='true'></span>";
-        		  acciones += "<span class='glyphicon glyphicon-remove cancelarPedido' aria-hidden='true'></span>";
+        		  acciones += "<a class='aceptarPedido'><span class='glyphicon glyphicon-ok ' aria-hidden='true'></span></a>";
+        		  acciones += "<a class='cancelarPedido'><span class='glyphicon glyphicon-remove ' aria-hidden='true'></span></a>";
         	  } else {
-        		  acciones += "No hay acciones pendientes.";
+        		  acciones += "";
         	  }
               return acciones; ;
           }

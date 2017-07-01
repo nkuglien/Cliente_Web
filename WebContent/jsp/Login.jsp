@@ -117,26 +117,60 @@ body {
 <div class="login-page">
   <div class="form">
   <div class="header"><img alt="WWG" id="imagenLogo" src="/Cliente_Web/Images/GGWLogo.png"></div>
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form" method="post" action="/Cliente_Web/Account">
-      <input type="text" placeholder="username" name="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+   
+    <form class="login-form" method="post"  action="/Cliente_Web/Account">
+      <input type="text" placeholder="username" name="username" id="username"/>
+      <input type="password" placeholder="password" id="pass"/>
+      <button type="button">login</button>
+      <p class="message" style="color:red; display:none;">Login incorrecto</p>
     </form>
   </div>
 </div>
 <script src="/Cliente_Web/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-$('.message a').click(function(){
-	   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+
+$("button").click(function(){
+	if(($("#username").val()=="empleado" || validaCuit($("#username").val())) && $("#pass").val()!=""){
+		$("form").submit();
+	}
+	else{
+		 $('.message').show("slow");
+	}
+	
+});
+
+$('input').keypress(function(){
+	   $('.message').hide("slow");
 	});
+	
+	
+	
+function validaCuit(sCUIT) 
+{     
+    var aMult = '5432765432'; 
+    var aMult = aMult.split(''); 
+     
+    if (sCUIT && sCUIT.length == 11) 
+    { 
+        aCUIT = sCUIT.split(''); 
+        var iResult = 0; 
+        for(i = 0; i <= 9; i++) 
+        { 
+            iResult += aCUIT[i] * aMult[i]; 
+        } 
+        iResult = (iResult % 11); 
+        iResult = 11 - iResult; 
+         
+        if (iResult == 11) iResult = 0; 
+        if (iResult == 10) iResult = 9; 
+         
+        if (iResult == aCUIT[10]) 
+        { 
+            return true; 
+        } 
+    }     
+    return false; 
+} 
 </script>
 
 </body>

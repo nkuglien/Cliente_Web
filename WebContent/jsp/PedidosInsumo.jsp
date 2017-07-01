@@ -27,8 +27,8 @@
 		<div class="col-md-3">
 		<div class="form-group">
 			<label>Fecha despacho</label>
-			<input type="text" name="fechaDespacho" id="fechaDespacho"
-								class="form-control" />
+			<input type="text" name="fechaDespacho" 
+								class="form-control fecha" />
 		</div>
 		</div>
 		<div class="col-md-3">
