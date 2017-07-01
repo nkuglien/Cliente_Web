@@ -40,7 +40,9 @@ public class PrendasServlet extends HttpServlet {
 		List<PrendaDTO> prendas = PrendaDelegate.GetInstancia().getAllPrendas();
 		List<VariedadPrendaDTO> variedades = new ArrayList<VariedadPrendaDTO>();
 		for(PrendaDTO p : prendas){
+			System.out.println("la descripcion es: "+p.getDescripcion());
 			for(VariedadPrendaDTO vp : p.getVariedades()){
+				vp.setPrendaString(p.getDescripcion());
 				variedades.add(vp);
 			}
 		}

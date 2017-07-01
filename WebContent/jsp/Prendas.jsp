@@ -22,7 +22,8 @@
                     columns: columnas,
                     pagination: "true",
                     pageSize:10,
-                    pageList:[10,25,50]
+                    pageList:[10,25,50],
+                    search:true
                 });
   
   });
@@ -41,15 +42,23 @@
           align: 'center',
           valign: 'middle',
           title: "Prenda",
-          width: '10%',
+          width: '20%',
           visible: true
       },
       {
-          field: "Talle",
+          field: "talle",
           align: 'center',
           valign: 'middle',
-          title: "talle",
-          width: '10%',
+          title: "Talle",
+          width: '5%',
+          visible: true
+      },
+      {
+          field: "color",
+          align: 'center',
+          valign: 'middle',
+          title: "Color",
+          width: '5%',
           visible: true
       },
       {
@@ -72,7 +81,7 @@
           field: "precioVentaActual",
           align: 'center',
           valign: 'middle',
-          title: "Color",
+          title: "Precio",
           width: '10%',
           visible: true         
       },    
@@ -80,7 +89,7 @@
           field: "stock",
           align: 'center',
           valign: 'middle',
-          title: "Color",
+          title: "Stock",
           width: '10%',
           visible: true         
       },    
