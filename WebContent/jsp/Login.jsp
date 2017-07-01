@@ -22,6 +22,7 @@
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
+  padding-top:20px;	
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -108,9 +109,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+#imagenLogo{
+    width: 60%;
+    margin-bottom: 20px;
+}
 </style>
 <div class="login-page">
   <div class="form">
+  <div class="header"><img alt="WWG" id="imagenLogo" src="/Cliente_Web/Images/GGWLogo.png"></div>
     <form class="register-form">
       <input type="text" placeholder="name"/>
       <input type="password" placeholder="password"/>
