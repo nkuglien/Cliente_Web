@@ -20,7 +20,8 @@
                     columns: columnas,
                     pagination: "true",
                     pageSize:10,
-                    pageList:[10,25,50]
+                    pageList:[10,25,50],
+                    search:true
                 });
   
   });

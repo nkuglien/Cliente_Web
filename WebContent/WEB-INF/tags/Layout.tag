@@ -27,6 +27,7 @@
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/navbar.css">
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="/Cliente_Web/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="/Cliente_Web/css/bootstrap-datepicker.min.css">
 
 <script src="/Cliente_Web/Scripts/jquery-3.2.1.min.js"></script>
 <script src="/Cliente_Web/Scripts/bootstrap.min.js"></script>
@@ -37,6 +38,7 @@
 <script src="/Cliente_Web/Scripts/bootstrap-table-filter.es-LA.js"></script>
 <script src="/Cliente_Web/Scripts/Mati.js"></script>
 <script src="/Cliente_Web/Scripts/jquery.blockUI.js"></script>
+<script src="/Cliente_Web/Scripts/bootstrap-datepicker.min.js"></script>
 
 
 
@@ -69,7 +71,7 @@ height: 100%;
 					<%if(cookieValue.equals("empleado")){ %>
 							<li><a href="/Cliente_Web/jsp/Pedidos.jsp">Pedidos</a></li>
 							<li><a href="/Cliente_Web/jsp/OrdenesProduccion.jsp">Ordenes de Produccion</a></li>
-							<li><a href="/Cliente_Web/jsp/PedidosInsumo.jsp">Pedidos Insumos</a></li>
+							<li><a href="/Cliente_Web/PedidosInsumo/View">Pedidos Insumos</a></li>
 							<li><a href="/Cliente_Web/jsp/Insumos.jsp">Insumos</a></li>
 							<li><a href="/Cliente_Web/jsp/Prendas.jsp">Prendas</a></li>
 							<li><a href="/Cliente_Web/jsp/Clientes.jsp">Clientes</a></li>

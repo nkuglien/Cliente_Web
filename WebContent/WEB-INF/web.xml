@@ -30,6 +30,13 @@
 		<servlet-name>PrendasServlet</servlet-name>
 		<servlet-class>servlets.PrendasServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ViewPedidosInsumo</display-name>
+		<servlet-name>ViewPedidosInsumo</servlet-name>
+		<servlet-class>servlets.ViewPedidosInsumo</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AccountServlet</servlet-name>
 		<url-pattern>/AccountServlet</url-pattern>
@@ -45,6 +52,10 @@
 	<servlet-mapping>
 		<servlet-name>PrendasServlet</servlet-name>
 		<url-pattern>/PrendasServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewPedidosInsumo</servlet-name>
+		<url-pattern>/ViewPedidosInsumo</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>		
 		<welcome-file>/jsp/Login.jsp</welcome-file>
