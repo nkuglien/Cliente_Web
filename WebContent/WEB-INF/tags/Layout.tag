@@ -36,6 +36,7 @@
 <script src="/Cliente_Web/Scripts/bootstrap-table-filter.js"></script>
 <script src="/Cliente_Web/Scripts/bootstrap-table-filter.es-LA.js"></script>
 <script src="/Cliente_Web/Scripts/Mati.js"></script>
+<script src="/Cliente_Web/Scripts/jquery.blockUI.js"></script>
 
 
 
@@ -48,11 +49,19 @@ list-style: none;
 a{
 cursor:pointer;
 }
+.navbar-brand{
+	padding: 5px;
+    margin: 0px 30px;
+    margin-left:30px !important;
+}
+#imagenLogo{
+height: 100%;
+}
 </style>
 <nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Nombre Empresa?</a>
+				<a class="navbar-brand" href="/Cliente_Web/jsp/Home.jsp"><img alt="WWG" id="imagenLogo" src="/Cliente_Web/Images/GGWLogo.png"> </a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">

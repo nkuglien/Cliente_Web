@@ -5,6 +5,101 @@
 <jsp:attribute name="content">
 		
 <h2>Prendas / Variedades</h2>
+
+
+
+<div id="table"></div>
+
+<script>
+
+  $(function () {
+  var tabla = $("#table");
+  
+  tabla.bootstrapTable(
+                {
+                    url: "/Cliente_Web/Prendas",
+                    method: "GET",
+                    columns: columnas,
+                    pagination: "true",
+                    pageSize:10,
+                    pageList:[10,25,50]
+                });
+  
+  });
+ 
+  var columnas = [
+      {
+          field: "id",
+          align: 'center',
+          valign: 'middle',
+          title: "ID",
+          width: '5%',
+          visible: true
+      },
+      {
+          field: "prendaString",
+          align: 'center',
+          valign: 'middle',
+          title: "Prenda",
+          width: '10%',
+          visible: true
+      },
+      {
+          field: "Talle",
+          align: 'center',
+          valign: 'middle',
+          title: "talle",
+          width: '10%',
+          visible: true
+      },
+      {
+          field: "cantidadProduccionFija",
+          align: 'center',
+          valign: 'middle',
+          title: "Cantidad a producir",
+          width: '10%',
+          visible: true         
+      },     
+      {
+          field: "costoProduccionActual",
+          align: 'center',
+          valign: 'middle',
+          title: "Costo",
+          width: '10%',
+          visible: true         
+      },    
+      {
+          field: "precioVentaActual",
+          align: 'center',
+          valign: 'middle',
+          title: "Color",
+          width: '10%',
+          visible: true         
+      },    
+      {
+          field: "stock",
+          align: 'center',
+          valign: 'middle',
+          title: "Color",
+          width: '10%',
+          visible: true         
+      },    
+      {
+          field: "enProduccion",
+          align: 'center',
+          valign: 'middle',
+          title: "Vigente",
+          width: '10%',
+          visible: true         
+      },    
+      
+  
+  ];
+  
+  </script>
+
+
+
 </jsp:attribute>
 </mt:Layout>
 	
