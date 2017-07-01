@@ -78,13 +78,24 @@
           visible: true
       },
       {
-          field: 'boton',
+          field: 'items',
           align: 'center',
           width: '20%',
           mostrar: true,
           events: {
               'click .search': function (e, value, row, index) {
-                  alert("Apretaste Lupa")
+            	  var tableItems = "<table class='table'>"
+             	  tableItems += "<thead><tr><th>Preda</th><th>Variedad</th><th>Precio Unitario</th><th>Cantidad</th></tr></thead><tbody>";
+           		  for(i=0; i<value.length; i++) {
+           			  tableItems += '<tr>';
+           			  tableItems += '<td>' + value[i].item.prenda.descripcion + '</td>';
+           			  tableItems += '<td>' + value[i].item.color + ' - ' + value[i].item.talle + '</td>';
+           			  tableItems += '<td>' + value[i].precioItem + '</td>';
+           			  tableItems += '<td>' + value[i].cantidad + '</td>';
+           			  tableItems += '</tr>';
+           		  }
+            	  tableItems += "</tbody></table>";
+				  alert(tableItems, "Items de mi pedido");
               }
           },
           formatter: function operateFormatter(value, row, index) {
