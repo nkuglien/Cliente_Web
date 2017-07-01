@@ -21,8 +21,6 @@ private static final long serialVersionUID = 1L;
 		Long nroPedido = Long.parseLong(req.getParameter("nroPedido"));
 		EstadoPedidoCliente estado = EstadoPedidoCliente.valueOf(req.getParameter("estado"));
 		PedidoDelegate.GetInstancia().cambiarEstadoPedido(nroPedido, estado);
-		
-		req.getRequestDispatcher("/jsp/viewPedidosCliente.jsp").forward(req, resp);
 	}
 
 }

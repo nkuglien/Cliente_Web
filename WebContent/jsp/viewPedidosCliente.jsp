@@ -86,13 +86,37 @@
           title: "",
           events: {
               'click .aceptarPedido': function (e, value, row, index) {
-            	 
-            	  
-            	  
+            	  console.log(row);
+            	  $.ajax({
+          			method: "GET",
+          			url: "/Cliente_Web/pedidos/estado?nroPedido=" + row.nroPedido + "&estado=ACEPTADO"
+          		  })
+          		  .done(function(data) {
+	          		   console.log(data);
+	          		   window.location.href = "/Cliente_Web/jsp/viewPedidosCliente.jsp";
+          		  });
+              },
+              'click .cancelarPedido': function (e, value, row, index) {
+            	  console.log(row);
+            	  $.ajax({
+          			method: "GET",
+          			url: "/Cliente_Web/pedidos/estado?nroPedido=" + row.nroPedido + "&estado=CANCELADO"
+          		  })
+          		  .done(function(data) {
+	          		   console.log(data);
+	          		   window.location.href = "/Cliente_Web/jsp/viewPedidosCliente.jsp";
+          		  });
               }
           },
           formatter: function operateFormatter(value, row, index) {
-                  return  "<span class='glyphicon glyphicon-ok' aria-hidden='true' onclick='javascript:removeItem(this)'></span>";
+        	  var acciones = "";
+        	  if (row.estado == "CREADO") {
+        		  acciones += "<span class='glyphicon glyphicon-ok aceptarPedido' aria-hidden='true'></span>";
+        		  acciones += "<span class='glyphicon glyphicon-remove cancelarPedido' aria-hidden='true'></span>";
+        	  } else {
+        		  acciones += "No hay acciones pendientes.";
+        	  }
+              return acciones; ;
           }
       },
       {
