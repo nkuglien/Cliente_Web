@@ -39,17 +39,31 @@
 		</div>
 	</div>
 	</form>
+	<form id="formTerminar">
+	<div class="row">
+	
+		<div class="col-md-3">
+		<div class="form-group">
+			<label>Fecha despacho final</label>
+			<input type="text" name="fechaDespachoReal" 
+								class="form-control fecha" />
+		</div>
+		</div>
+		
+	</div>
+	</form>
 </div>
 
 
 <script>
+var tabla = $("#table");
 	$(function() {
-		$("#fechaDespacho").datepicker({
+		$(".fecha").datepicker({
 			format : 'dd/mm/yyyy',
 			autoclose : true
 		});
 
-		var tabla = $("#table");
+		
 
 		tabla.bootstrapTable({
 			url : "/Cliente_Web/PedidoInsumo",
@@ -168,18 +182,36 @@
 
 									});
 
-						}, "Complete los datos del pedido")
+						}, "Complete los datos del pedido");
 
 					},
 					'click .terminar' : function(e, value, row, index) {
-						var datos = {};
-						datos.id = row.id;
-						datos.Action = "terminar";
-						$.post("/Cliente_Web/PedidoInsumo", datos, function(
-								data) {
-							alert(data.Mensaje);
+						var formulario = $("#formTerminar");
 
-						});
+						confirm(formulario, function() {
+							var datos = formulario.serializeArray();
+							datos.push({
+								name : "Action",
+								value : "terminar"
+							});
+							datos.push({
+								name : "id",
+								value : row.id
+							});
+
+							$.post("/Cliente_Web/PedidoInsumo", datos,
+									function(data) {
+										if(data.Result=="OK"){
+											alert("Actualizado correctamente");
+											tabla.bootstrapTable("refresh");
+										}
+										else {
+											alert(data.Mensaje);
+										}
+
+									});
+
+						}, "Ingrese los datos para terminar el pedido");
 					}
 				},
 				formatter : function operateFormatter(value, row, index) {
