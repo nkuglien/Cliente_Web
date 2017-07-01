@@ -15,60 +15,65 @@
   
   tabla.bootstrapTable(
                 {
-                    url: "/Cliente_Web/pedidos/all?",
+                    url: "/Cliente_Web/pedidos/all?cuit=" + usuario,
                     method: "GET",
                     columns: columnas,
                     pagination: "true",
                     pageSize:10,
-                    pageList:[10,25,50]
+                    pageList:[10,25,50],
+                    search: true
                 });
   
   });
   var columnas = [
       {
-          field: "id",
+          field: "nroPedido",
           align: 'center',
           valign: 'middle',
-          title: "ID",
+          title: "Numero de Pedido",
           visible: false
       },
       {
-          field: "nroCliente",
+          field: "fechaGeneracion",
           align: 'center',
           valign: 'middle',
-          title: "Numero",
+          title: "Fecha de Generacion",
           width: '20%',
           visible: true
       },
       {
-          field: "nombre",
+          field: "fechaProbableDespacho",
           align: 'center',
           valign: 'middle',
-          title: "Nombre",
+          title: "Fecha Probable Despacho",
           width: '20%',
           visible: true
       },
       {
-          field: "direccion",
+          field: "total",
           align: 'center',
           valign: 'middle',
-          title: "Direccion",
+          title: "Total",
+          width: '20%',
+          visible: true,
+          formatter: function operateFormatter(value, row, index) {
+              return  "$" + value;             
+
+      }
+      },
+      {
+          field: "estado",
+          align: 'center',
+          valign: 'middle',
+          title: "Estado",
           width: '20%',
           visible: true
       },
       {
-          field: "telefono",
+          field: "nota",
           align: 'center',
           valign: 'middle',
-          title: "Telefono",
-          width: '20%',
-          visible: true
-      },
-      {
-          field: "cuit",
-          align: 'center',
-          valign: 'middle',
-          title: "CUIT",
+          title: "Nota",
           width: '20%',
           visible: true
       },
