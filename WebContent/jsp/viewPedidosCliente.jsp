@@ -78,6 +78,24 @@
           visible: true
       },
       {
+          field: "botonAceptar",
+          align: 'center',
+          valign: 'middle',
+          width: '20%',
+          visible: true,
+          title: "",
+          events: {
+              'click .aceptarPedido': function (e, value, row, index) {
+            	 
+            	  
+            	  
+              }
+          },
+          formatter: function operateFormatter(value, row, index) {
+                  return  "<span class='glyphicon glyphicon-ok' aria-hidden='true' onclick='javascript:removeItem(this)'></span>";
+          }
+      },
+      {
           field: 'items',
           align: 'center',
           width: '20%',
