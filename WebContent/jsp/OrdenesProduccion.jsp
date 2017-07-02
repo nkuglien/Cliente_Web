@@ -37,6 +37,31 @@ var tabla = $("#table");
           visible: true
       },
       {
+          field: "tipo",
+          align: 'center',
+          valign: 'middle',
+          title: "Tipo",
+          width: '10%',
+          visible: true
+      },
+      {
+          field: "prenda",
+          align: 'center',
+          valign: 'middle',
+          title: "Prenda",
+          width: '40%',
+          visible: true
+      },
+      {
+          field: "variedadesString",
+          align: 'center',
+          valign: 'middle',
+          title: "Variedades",
+          width: '30%',
+          visible: true,
+         
+      },     
+      {
           field: "fecha",
           align: 'center',
           valign: 'middle',
@@ -59,23 +84,6 @@ var tabla = $("#table");
           width: '10%',
           visible: true
       },
-      {
-          field: "prenda",
-          align: 'center',
-          valign: 'middle',
-          title: "Prenda",
-          width: '40%',
-          visible: true
-      },
-      {
-          field: "variedadesString",
-          align: 'center',
-          valign: 'middle',
-          title: "Variedades",
-          width: '30%',
-          visible: true,
-         
-      },     
       {
           field: 'boton',
           align: 'center',
@@ -119,14 +127,32 @@ var tabla = $("#table");
           },
           formatter: function operateFormatter(value, row, index) {  
         	  if(row.estado=="COMPLETO")
-                    return  "<a class='producir' title='Producir'><i class='fa fa-cogs fa-lg' style='color:red'></i></a>";        
+                    return  "<a class='producir' title='Producir'><i class='fa fa-cogs fa-lg' ></i></a>";        
                     else if(row.estado=="PRODUCCION")
-                  return  "<a class='finProduccion' title='Terminar'><i class='fa fa-step-forward fa-lg' style='color:red'></i></a>";            
+                  return  "<a class='finProduccion' title='Terminar'><i class='fa fa-step-forward fa-lg' '></i></a>";            
                   else
                 	  return "";
           }
 
       },
+      {
+          field: 'boton2',
+          align: 'center',
+          width: '20%',
+          mostrar: true,
+          events: {
+              'click .verDetalle': function (e, value, row, index) {            	  
+            	  alert("Aca va el detalle");
+              },
+             
+          },
+          formatter: function operateFormatter(value, row, index) {  
+        	  
+                  return  "<a class='verDetalle' title='Detalle'><i class='fa fa-search fa-lg' ></i></a>";            
+                 
+          }
+
+      }
   
   ];
   
