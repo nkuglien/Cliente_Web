@@ -10,9 +10,9 @@
 <div id="table"></div>
 
 <script>
-
+var tabla = $("#table");
   $(function () {
-  var tabla = $("#table");
+ 
   
   tabla.bootstrapTable(
                 {
@@ -44,6 +44,14 @@
           visible: true
       },
       {
+          field: "estado",
+          align: 'center',
+          valign: 'middle',
+          title: "Estado",
+          width: '10%',
+          visible: true
+      },
+      {
           field: "prenda",
           align: 'center',
           valign: 'middle',
@@ -68,19 +76,48 @@
           width: '20%',
           mostrar: true,
           events: {
-              'click .producir': function (e, value, row, index) {
-                  alert("Vas a producir id "+ row.id)
+              'click .producir': function (e, value, row, index) {            	  
+            	  var datos={};
+            	  datos.id = row.id;
+            	  datos.Action="producir";
+                  confirm("Esta seguro que desea mandar a producir la orden id "+row.id,function(){
+                	  $.post("/Cliente_Web/OrdenProduccion",datos,function(data){
+                		  if(data.Result="OK"){
+                		  alert("La orden se ha enviado a producir");
+                		  tabla.bootstrapTable('refresh');
+                		  }
+                		  else{
+                			  alert("Error: "+data.Mensaje);
+                		  }
+                	  });
+                	  
+                  });
               },
-              'click .finProduccion': function (e, value, row, index) {
-                  alert("Vas a completar id "+ row.id)
+              'click .finProduccion': function (e, value, row, index) {            	  
+            	  var datos={};
+            	  datos.id = row.id;
+            	  datos.Action="terminar";
+                  confirm("Esta seguro que desea terminar a producir la orden id "+row.id,function(){
+                	  $.post("/Cliente_Web/OrdenProduccion",datos,function(data){
+                		  if(data.Result="OK"){
+                		  alert("La orden se ha enviado a deposito");
+                		  tabla.bootstrapTable('refresh');
+                		  }
+                		  else{
+                			  alert("Error: "+data.Mensaje);
+                		  }
+                	  });
+                	  
+                  });
               }
           },
           formatter: function operateFormatter(value, row, index) {  
         	  if(row.estado=="COMPLETO")
                     return  "<a class='producir' title='Producir'><i class='fa fa-cogs fa-lg' style='color:red'></i></a>";        
-        	  if(row.estado=="PRODUCCION")
+                    else if(row.estado=="PRODUCCION")
                   return  "<a class='finProduccion' title='Terminar'><i class='fa fa-step-forward fa-lg' style='color:red'></i></a>";            
-
+                  else
+                	  return "";
           }
 
       },

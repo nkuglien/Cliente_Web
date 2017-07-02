@@ -1,6 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +18,7 @@ import DTO.ClienteDTO;
 import DTO.OrdenProduccionDTO;
 import businessDelegates.ClienteDelegate;
 import businessDelegates.OrdenProduccionDelegate;
+import businessDelegates.PedidoInsumoDelegate;
 
 /**
  * Servlet implementation class OrdenProduccionServlet
@@ -48,8 +52,36 @@ public class OrdenProduccionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String json = null;
+		try {
+			if (request.getParameter("Action").equals("producir")) {
+					Long id = Long.decode( request.getParameter("id"));
+					OrdenProduccionDelegate.getInstance().ponerAProducir(id);
+				json = "{\"Result\":\"OK\"}";
+			
+			
+			
+			
+			
+			
+			} else if (request.getParameter("Action").equals("terminar")) {
+				Long id = Long.decode( request.getParameter("id"));	
+				OrdenProduccionDelegate.getInstance().finProduccion(id);
+				json = "{\"Result\":\"OK\"}";
+			
+			
+			
+			
+			} else {
+				json = "{\"Result\":\"ERROR\",\"Mensaje\":\"Operacion no valida\"}";
+			}
+		} catch (Exception e) {
+			json = "{\"Result\":\"ERROR\",\"Mensaje\":\"" + e.getMessage() + "\"}";
+		}
+
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(json);
 	}
 
 }

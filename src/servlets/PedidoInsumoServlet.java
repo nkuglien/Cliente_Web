@@ -81,7 +81,7 @@ public class PedidoInsumoServlet extends HttpServlet {
 					throw new Exception("Faltan datos");
 				
 				
-				json = "{\"Result\":\"OK\",\"Mensaje\":\"Ingresado correctamente\"}";
+				json = "{\"Result\":\"OK\"}";
 			} else {
 				json = "{\"Result\":\"ERROR\",\"Mensaje\":\"Operacion no valida\"}";
 			}

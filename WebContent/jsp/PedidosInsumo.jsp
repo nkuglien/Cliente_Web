@@ -72,7 +72,8 @@ var tabla = $("#table");
 			pagination : "true",
 			pageSize : 10,
 			pageList : [ 10, 25, 50 ],
-			search : true
+			search : true,
+			showColumns:true
 		});
 
 	});
@@ -85,6 +86,7 @@ var tabla = $("#table");
 				title : "ID",
 				visible : true,
 				width : '5%',
+				switchable:false
 			},
 			{
 				field : "proveedor",
@@ -100,7 +102,14 @@ var tabla = $("#table");
 				valign : 'middle',
 				title : "Generacion",
 				width : '10%',
-				visible : true
+				visible : true,
+				formatter : function operateFormatter(value, row, index) {
+					if (value!=undefined && value!="")
+						return value.substring(0, 11);
+					else
+						return "";
+
+				}
 			},
 			{
 				field : "fechaDespacho",
@@ -108,7 +117,14 @@ var tabla = $("#table");
 				valign : 'middle',
 				title : "Despacho",
 				width : '10%',
-				visible : true
+				visible : true,
+				formatter : function operateFormatter(value, row, index) {
+					if (value!=undefined && value!="")
+						return value.substring(0, 11);
+					else
+						return "";
+
+				}
 			},
 			{
 				field : "fechaDespachoReal",
@@ -116,7 +132,14 @@ var tabla = $("#table");
 				valign : 'middle',
 				title : "Despacho real",
 				width : '10%',
-				visible : true
+				visible : true,
+				formatter : function operateFormatter(value, row, index) {
+					if (value!=undefined && value!="")
+						return value.substring(0, 11);
+					else
+						return "";
+
+				}
 			},
 			{
 				field : "estado",
@@ -151,9 +174,34 @@ var tabla = $("#table");
 				visible : true
 			},
 			{
+				field : "idLote",
+				align : 'center',
+				valign : 'middle',
+				title : "Lote",
+				width : '10%',
+				visible : false
+			},
+			{
+				field : "posicion",
+				align : 'center',
+				valign : 'middle',
+				title : "Almacen",
+				width : '10%',
+				visible : false
+			},
+			{
+				field : "disponible",
+				align : 'center',
+				valign : 'middle',
+				title : "Cant disp.",
+				width : '10%',
+				visible : false
+			},
+			{
 				field : 'boton',
 				align : 'center',
 				width : '10%',
+				switchable:false,
 				mostrar : true,
 				events : {
 					'click .completar' : function(e, value, row, index) {
