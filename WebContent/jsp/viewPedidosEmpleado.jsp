@@ -100,8 +100,7 @@
           			url: "/Cliente_Web/pedidos/estado?nroPedido=" + row.nroPedido + "&estado=VALIDADO"
           		  })
           		  .done(function(data) {
-	          		   console.log(data);
-	          		   window.location.href = "/Cliente_Web/jsp/viewPedidosCliente.jsp";
+          				window.location.href = "/Cliente_Web/jsp/viewPedidosEmpleado.jsp";
           		  });
               },
               'click .rechazarPedido': function (e, value, row, index) {
@@ -111,8 +110,7 @@
           			url: "/Cliente_Web/pedidos/estado?nroPedido=" + row.nroPedido + "&estado=RECHAZADO"
           		  })
           		  .done(function(data) {
-	          		   console.log(data);
-	          		   window.location.href = "/Cliente_Web/jsp/viewPedidosCliente.jsp";
+          				window.location.href = "/Cliente_Web/jsp/viewPedidosEmpleado.jsp";
           		  });
               }
           },
