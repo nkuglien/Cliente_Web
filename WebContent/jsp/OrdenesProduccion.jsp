@@ -21,7 +21,8 @@ var tabla = $("#table");
                     columns: columnas,
                     pagination: "true",
                     pageSize:10,
-                    pageList:[10,25,50]
+                    pageList:[10,25,50],
+                    search:true,
                 });
   
   });
@@ -41,7 +42,14 @@ var tabla = $("#table");
           valign: 'middle',
           title: "Fecha",
           width: '10%',
-          visible: true
+          visible: true,
+          formatter : function operateFormatter(value, row, index) {
+				if (value!=undefined && value!="")
+					return value.substring(0, 11);
+				else
+					return "";
+
+			}
       },
       {
           field: "estado",
@@ -66,9 +74,7 @@ var tabla = $("#table");
           title: "Variedades",
           width: '30%',
           visible: true,
-          formatter: function operateFormatter(value, row, index) {              
-              return  eval(value);  
-    		}
+         
       },     
       {
           field: 'boton',
