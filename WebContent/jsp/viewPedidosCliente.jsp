@@ -31,7 +31,7 @@
           align: 'center',
           valign: 'middle',
           title: "Numero de Pedido",
-          visible: false
+          visible: true
       },
       {
           field: "fechaGeneracion",
@@ -110,11 +110,11 @@
           },
           formatter: function operateFormatter(value, row, index) {
         	  var acciones = "";
-        	  if (row.estado == "CREADO") {
+        	  if (row.estado == "VALIDADO") {
         		  acciones += "<a class='aceptarPedido'><span class='glyphicon glyphicon-ok ' aria-hidden='true'></span></a>";
         		  acciones += "<a class='cancelarPedido'><span class='glyphicon glyphicon-remove ' aria-hidden='true'></span></a>";
-        	  } else {
-        		  acciones += "";
+        	  } else if (row.estado == "CREADO") {
+        		  acciones += "<a class='cancelarPedido'><span class='glyphicon glyphicon-remove ' aria-hidden='true'></span></a>";
         	  }
               return acciones; ;
           }

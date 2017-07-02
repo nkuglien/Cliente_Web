@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -29,12 +28,12 @@ private static final long serialVersionUID = 1L;
 		PedidoClienteDTO dto = new PedidoClienteDTO();
 		dto.setFechaGeneracion(new Date());
 		
-		Date probableDespacho = new Date();
-		Calendar c = Calendar.getInstance(); 
-		c.setTime(probableDespacho); 
-		c.add(Calendar.DATE, 15);
-		probableDespacho = c.getTime();
-		dto.setFechaProbableDespacho(probableDespacho);
+//		Date probableDespacho = new Date();
+//		Calendar c = Calendar.getInstance(); 
+//		c.setTime(probableDespacho); 
+//		c.add(Calendar.DATE, 15);
+//		probableDespacho = c.getTime();
+//		dto.setFechaProbableDespacho(probableDespacho);
 		
 		String[] prendas = req.getParameterValues("prenda");
 		String[] variedades = req.getParameterValues("variedad");

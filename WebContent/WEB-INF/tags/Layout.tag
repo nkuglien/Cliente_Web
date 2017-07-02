@@ -56,6 +56,12 @@ cursor:pointer;
     margin: 0px 30px;
     margin-left:30px !important;
 }
+
+.navbar-brand-salir {
+	margin: 0px 30px;
+    margin-left:30px !important;
+}
+
 #imagenLogo{
 height: 100%;
 }
@@ -69,7 +75,7 @@ height: 100%;
 				<ul class="nav navbar-nav">
 					<%if(cookieValue.equals("empleado")){ %>
 							<li><a href="/Cliente_Web/jsp/Home.jsp">Home</a></li>
-							<li><a href="/Cliente_Web/jsp/Pedidos.jsp">Pedidos</a></li>
+							<li><a href="/Cliente_Web/jsp/viewPedidosEmpleado.jsp">Pedidos</a></li>
 							<li><a href="/Cliente_Web/jsp/OrdenesProduccion.jsp">Ordenes de Produccion</a></li>
 							<li><a href="/Cliente_Web/PedidosInsumo/View">Pedidos Insumos</a></li>
 							<li><a href="/Cliente_Web/jsp/Insumos.jsp">Insumos</a></li>
