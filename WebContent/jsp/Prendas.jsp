@@ -100,7 +100,13 @@
           valign: 'middle',
           title: "Vigente",
           width: '10%',
-          visible: true         
+          visible: true,
+          formatter : function operateFormatter(value, row, index) {
+				if (value)
+					return "Si";
+				else
+					return "No";
+          }
       },    
       
   
