@@ -112,6 +112,16 @@
           		  .done(function(data) {
           				window.location.href = "/Cliente_Web/jsp/viewPedidosEmpleado.jsp";
           		  });
+              },
+              'click .despacharPedido': function (e, value, row, index) {
+            	  console.log(row);
+            	  $.ajax({
+          			method: "GET",
+          			url: "/Cliente_Web/pedidos/estado?nroPedido=" + row.nroPedido + "&estado=DESPACHADO"
+          		  })
+          		  .done(function(data) {
+          				window.location.href = "/Cliente_Web/jsp/viewPedidosEmpleado.jsp";
+          		  });
               }
           },
           formatter: function operateFormatter(value, row, index) {
@@ -119,10 +129,10 @@
         	  if (row.estado == "CREADO") {
         		  acciones += "<a class='validarPedido'><span class='glyphicon glyphicon-ok ' aria-hidden='true'></span></a>";
         		  acciones += "<a class='rechazarPedido'><span class='glyphicon glyphicon-remove ' aria-hidden='true'></span></a>";
-        	  } else {
-        		  acciones += "";
-        	  }
-              return acciones; ;
+        	  } else if (row.estado == "COMPLETO") {
+        		  acciones += "<a class='despacharPedido'><span class='glyphicon glyphicon-road ' aria-hidden='true'></span></a>";
+        	  } 
+              return acciones;
           }
       },
       {
@@ -131,7 +141,7 @@
           width: '20%',
           mostrar: true,
           events: {
-              'click .search': function (e, value, row, index) {
+              'click .verDetalle': function (e, value, row, index) {
             	  var tableItems = "<table class='table'>"
              	  tableItems += "<thead><tr><th>Prenda</th><th>Variedad</th><th>Precio Unitario</th><th>Cantidad</th></tr></thead><tbody>";
            		  for(i=0; i<value.length; i++) {
@@ -147,11 +157,60 @@
               }
           },
           formatter: function operateFormatter(value, row, index) {
-                    return  "<a class='search' title='Search'><i class='fa fa-search fa-lg' style='color:red'></i></a>";             
-
+        	  return  "<a class='verDetalle'><span class='glyphicon glyphicon-list ' aria-hidden='true'></span></a>";      
           }
 
       },
+      {
+          field: 'verFactura',
+          align: 'center',
+          width: '20%',
+          mostrar: true,
+          events: {
+              'click .verFactura': function (e, value, row, index) {
+            	  $.ajax({
+           			  method: "GET",
+           			  url: "/Cliente_Web/pedidos/factura?nroPedido=" + row.nroPedido
+           		  })
+           		  .done(function(data) {
+           			  console.log(data);
+           			  var logo = "<img style=\"width:20%\" alt=\"WWG\" id=\"imagenLogo\" src=\"/Cliente_Web/Images/GGWLogo.png\">";
+           			  var encabezado = "<h1 style=\"text-align:center\">FACTURA " + data.nroFactura + "</h1><table class='table'>";
+           			  encabezado += '<tr><td>PARA: ' + data.pedidoCliente.cliente.nombre + '</td>';
+           		  	  encabezado += '<td>CUIT nro:' + data.pedidoCliente.cliente.cuit + '</td></tr>';
+           			  encabezado += '<tr><td>Domicilio:' + data.pedidoCliente.cliente.direccion + '</td>';
+           			  encabezado += '<td>Telefono:' + data.pedidoCliente.cliente.telefono + '</td></tr>';
+           			  encabezado += '</table>';
+           				
+           			  var tableItems = "<table class='table'>"
+                      tableItems += "<thead><tr><th>Preda</th><th>Variedad</th><th>Precio Unitario</th><th>Cantidad</th></tr></thead><tbody>";
+	           		  for(i=0; i<row.items.length; i++) {
+	           			  tableItems += '<tr>';
+	           			  tableItems += '<td>' + row.items[i].item.prenda.descripcion + '</td>';
+	           			  tableItems += '<td>' + row.items[i].item.color + ' - ' + row.items[i].item.talle + '</td>';
+	           			  tableItems += '<td>' + row.items[i].precioItem + '</td>';
+	           			  tableItems += '<td>' + row.items[i].cantidad + '</td>';
+	           			  tableItems += '</tr>';
+	           		  }
+                 	  tableItems += "</tbody></table>";
+                 	  
+                 	  var footer = "<table class='table'>";
+                 	  footer += '<tr><td>Subtotal:</td><td>$' + data.pedidoCliente.subtotal+ '</td></tr>';
+                 	  footer += '<tr><td>Impuestos:</td><td>$' + data.pedidoCliente.impuestos+ '</td></tr>';
+                 	  footer += '<tr><td>Total:</td><td>$' + data.pedidoCliente.total+ '</td></tr>';
+          		      footer += '</table>';
+                 	  
+     				  alert(logo + encabezado + tableItems + footer, "Factura del pedido numero: " + data.nroFactura);
+           		  });
+              }
+          },
+          formatter: function operateFormatter(value, row, index) {
+        	  if (row.estado == "DESPACHADO") {
+	        	  return "<a class='verFactura'><span class='glyphicon glyphicon-file' aria-hidden='true'></span></a>";
+        	  }
+          }
+
+      }
   
   ];
   

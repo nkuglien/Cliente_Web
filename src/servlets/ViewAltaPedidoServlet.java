@@ -17,7 +17,7 @@ public class ViewAltaPedidoServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("prendas", PrendaDelegate.GetInstancia().getAllPrendas());
+		req.setAttribute("prendas", PrendaDelegate.GetInstancia().getPrendasVigentes());
 		req.getRequestDispatcher("/jsp/viewAltaPedido.jsp").forward(req, resp);
 	}
 
