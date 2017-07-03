@@ -31,38 +31,73 @@
           align: 'center',
           valign: 'middle',
           title: "Nro",
-          visible: true
+          visible: true,
+          width:"5%"
+      },
+      {
+          field: "cliente",
+          align: 'center',
+          valign: 'middle',
+          title: "Cliente",
+          visible: true,
+          width:"20%",
+          formatter : function operateFormatter(value, row, index) {
+				
+					return value.cuit+" | " + value.nombre;
+
+			}
       },
       {
           field: "fechaGeneracion",
           align: 'center',
           valign: 'middle',
-          title: "Fecha de Generacion",
-          width: '20%',
-          visible: true
+          title: "Generacion",
+          width: '10%',
+          visible: true,
+          formatter : function operateFormatter(value, row, index) {
+				if (value!=undefined && value!="")
+					return value.substring(0, 11);
+				else
+					return "";
+
+			}
       },
       {
           field: "fechaProbableDespacho",
           align: 'center',
           valign: 'middle',
-          title: "Fecha Probable Despacho",
-          width: '20%',
-          visible: true
+          title: "Probable Despacho",
+          width: '10%',
+          visible: true,
+          formatter : function operateFormatter(value, row, index) {
+				if (value!=undefined && value!="")
+					return value.substring(0, 11);
+				else
+					return "";
+
+			}
       },
       {
           field: "fechaDespacho",
           align: 'center',
           valign: 'middle',
-          title: "Fecha Despacho",
-          width: '20%',
-          visible: true
+          title: "Despacho",
+          width: '10%',
+          visible: true,
+          formatter : function operateFormatter(value, row, index) {
+				if (value!=undefined && value!="")
+					return value.substring(0, 11);
+				else
+					return "";
+
+			}
       },
       {
           field: "total",
           align: 'center',
           valign: 'middle',
           title: "Total",
-          width: '20%',
+          width: '10%',
           visible: true,
           formatter: function operateFormatter(value, row, index) {
               return  "$" + value;             
@@ -74,14 +109,14 @@
           align: 'center',
           valign: 'middle',
           title: "Estado",
-          width: '20%',
+          width: '10%',
           visible: true
       },
       {
           field: "nota",
           align: 'center',
           valign: 'middle',
-          title: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nota&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+          title: "Nota",
           width: '20%',
           visible: true
       },
@@ -89,7 +124,7 @@
           field: "botonAceptar",
           align: 'center',
           valign: 'middle',
-          width: '20%',
+          width: '5%',
           visible: true,
           title: "",
           events: {
@@ -138,7 +173,7 @@
       {
           field: 'items',
           align: 'center',
-          width: '20%',
+          width: '5%',
           mostrar: true,
           events: {
               'click .verDetalle': function (e, value, row, index) {
@@ -164,7 +199,7 @@
       {
           field: 'verFactura',
           align: 'center',
-          width: '20%',
+          width: '5%',
           mostrar: true,
           events: {
               'click .verFactura': function (e, value, row, index) {

@@ -31,13 +31,13 @@
           align: 'center',
           valign: 'middle',
           title: "ID",
-          visible: false
+          visible: true
       },
       {
-          field: "nroCliente",
+          field: "cuit",
           align: 'center',
           valign: 'middle',
-          title: "Numero",
+          title: "CUIT",
           width: '20%',
           visible: true
       },
@@ -65,14 +65,7 @@
           width: '20%',
           visible: true
       },
-      {
-          field: "cuit",
-          align: 'center',
-          valign: 'middle',
-          title: "CUIT",
-          width: '20%',
-          visible: true
-      },
+     
       {
           field: 'boton',
           align: 'center',
