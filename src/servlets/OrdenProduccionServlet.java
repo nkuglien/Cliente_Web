@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import DTO.ClienteDTO;
+import DTO.LoteVariedadPrendaDTO;
 import DTO.OrdenProduccionDTO;
 import businessDelegates.ClienteDelegate;
 import businessDelegates.OrdenProduccionDelegate;
@@ -68,6 +69,14 @@ public class OrdenProduccionServlet extends HttpServlet {
 				Long id = Long.decode( request.getParameter("id"));	
 				OrdenProduccionDelegate.getInstance().finProduccion(id);
 				json = "{\"Result\":\"OK\"}";
+			
+			
+			
+			
+			}  else if (request.getParameter("Action").equals("detalle")) {
+				Long id = Long.decode( request.getParameter("id"));	
+				List<LoteVariedadPrendaDTO> lotes = OrdenProduccionDelegate.getInstance().getLotes(id);
+				json = new Gson().toJson(lotes);
 			
 			
 			

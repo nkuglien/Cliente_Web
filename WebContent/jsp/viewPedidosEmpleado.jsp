@@ -133,7 +133,7 @@
           events: {
               'click .search': function (e, value, row, index) {
             	  var tableItems = "<table class='table'>"
-             	  tableItems += "<thead><tr><th>Preda</th><th>Variedad</th><th>Precio Unitario</th><th>Cantidad</th></tr></thead><tbody>";
+             	  tableItems += "<thead><tr><th>Prenda</th><th>Variedad</th><th>Precio Unitario</th><th>Cantidad</th></tr></thead><tbody>";
            		  for(i=0; i<value.length; i++) {
            			  tableItems += '<tr>';
            			  tableItems += '<td>' + value[i].item.prenda.descripcion + '</td>';

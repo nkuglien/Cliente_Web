@@ -142,7 +142,22 @@ var tabla = $("#table");
           mostrar: true,
           events: {
               'click .verDetalle': function (e, value, row, index) {            	  
-            	  alert("Aca va el detalle");
+            	  $.post("/Cliente_Web/OrdenProduccion",{Action:"detalle",id:row.id},function(data){
+            	              	  
+            	  var tableItems = "<table class='table'>"
+                 	  tableItems += "<thead><tr><th>Preda</th><th>Cantidad</th><th>Lote</th><th>Disponible</th><th>Almacen</th></tr></thead><tbody>";
+               		  data.forEach(function(item,index) {
+               			  tableItems += '<tr>';
+               			  tableItems += '<td>' + item.variedadPrenda.prendaString + ' talle: '+item.variedadPrenda.talle+' color: '+item.variedadPrenda.color+'</td>';
+               			  tableItems += '<td>' + item.cantidad + '</td>';
+               			  tableItems += '<td>' + item.id+ '</td>';
+               			  tableItems += '<td>' + item.cantDisponible + '</td>';
+               			  tableItems += '<td>' + item.posicion + '</td>';
+               			  tableItems += '</tr>';
+               		  });
+                	  tableItems += "</tbody></table>";
+    				  alert(tableItems, "Lotes de la orden");
+            	  });
               },
              
           },
