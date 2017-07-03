@@ -148,7 +148,7 @@ var tabla = $("#table");
                  	  tableItems += "<thead><tr><th>Preda</th><th>Cantidad</th><th>Lote</th><th>Disponible</th><th>Almacen</th></tr></thead><tbody>";
                		  data.forEach(function(item,index) {
                			  tableItems += '<tr>';
-               			  tableItems += '<td>' + item.variedadPrenda.prendaString + ' talle: '+item.variedadPrenda.talle+' color: '+item.variedadPrenda.color+'</td>';
+               			  tableItems += '<td>' + item.variedadPrenda.prenda.descripcion + ' talle: '+item.variedadPrenda.talle+' color: '+item.variedadPrenda.color+'</td>';
                			  tableItems += '<td>' + item.cantidad + '</td>';
                			  tableItems += '<td>' + item.id+ '</td>';
                			  tableItems += '<td>' + item.cantDisponible + '</td>';
@@ -162,7 +162,7 @@ var tabla = $("#table");
              
           },
           formatter: function operateFormatter(value, row, index) {  
-        	  
+        	  if(row.estado=="TERMINADO")
                   return  "<a class='verDetalle' title='Detalle'><i class='fa fa-search fa-lg' ></i></a>";            
                  
           }
