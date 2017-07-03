@@ -174,6 +174,7 @@
            		  })
            		  .done(function(data) {
            			  console.log(data);
+           			  var logo = "<img style=\"width:20%\" alt=\"WWG\" id=\"imagenLogo\" src=\"/Cliente_Web/Images/GGWLogo.png\">";
            			  var encabezado = "<h1 style=\"text-align:center\">FACTURA " + data.nroFactura + "</h1><table class='table'>";
            			  encabezado += '<tr><td>PARA: ' + data.pedidoCliente.cliente.nombre + '</td>';
            		  	  encabezado += '<td>CUIT nro:' + data.pedidoCliente.cliente.cuit + '</td></tr>';
@@ -199,7 +200,7 @@
                  	  footer += '<tr><td>Total:</td><td>$' + data.pedidoCliente.total+ '</td></tr>';
           		      footer += '</table>';
                  	  
-     				  alert(encabezado + tableItems + footer, "Factura del pedido numero: " + data.nroFactura);
+     				  alert(logo + encabezado + tableItems + footer, "Factura del pedido numero: " + data.nroFactura);
            		  });
               }
           },
